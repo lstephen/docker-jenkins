@@ -16,6 +16,7 @@ RUN mkdir -p ${JENKINS_HOME}
 ENV JENKINS_PLUGINS_HOME ${JENKINS_INSTALL}/plugins
 RUN mkdir -p ${JENKINS_PLUGINS_HOME}
 
+RUN install-pinned-plugin.sh antisamy-markup-formatter
 RUN install-pinned-plugin.sh credentials
 RUN install-pinned-plugin.sh cvs
 RUN install-pinned-plugin.sh javadoc
@@ -24,8 +25,8 @@ RUN install-pinned-plugin.sh ldap
 RUN install-pinned-plugin.sh mailer
 RUN install-pinned-plugin.sh matrix-auth
 RUN install-pinned-plugin.sh maven-plugin
-RUN install-pinned-plugin.sh antisamy-markup-formatter
 RUN install-pinned-plugin.sh pam-auth
+RUN install-pinned-plugin.sh ssh-credentials
 RUN install-pinned-plugin.sh subversion
 RUN install-pinned-plugin.sh translation
 
