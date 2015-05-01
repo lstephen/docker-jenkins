@@ -1,4 +1,6 @@
 jenkins:
   build: latest
+  environment:
+    - JENKINS_RESTORE_FROM
   ports:
     - 8080:8080

@@ -4,7 +4,7 @@ set -e
 if [[ -n "$JENKINS_RESTORE_FROM" ]]
 then
   echo "Restoring from ${JENKINS_RESTORE_FROM}..."
-  curl $JENKINS_RESTORE_FROM | tar xvf -C $JENKINS_HOME
+  curl $JENKINS_RESTORE_FROM | tar zxvf - -C $JENKINS_HOME
 fi
 
 echo "Copying plugins..."
