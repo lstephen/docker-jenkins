@@ -8,8 +8,8 @@ then
 fi
 
 echo "Copying plugins..."
+rm -rf ${JENKINS_HOME}/plugins
 mkdir -p ${JENKINS_HOME}/plugins
-rm -rf ${JENKINS_HOME}/plugins/*
 cp ${JENKINS_PLUGINS_HOME}/* ${JENKINS_HOME}/plugins || :
 
 exec "$@"
