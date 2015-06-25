@@ -24,12 +24,14 @@ RUN install-pinned-plugin.sh junit
 RUN install-pinned-plugin.sh ldap
 RUN install-pinned-plugin.sh mailer
 RUN install-pinned-plugin.sh matrix-auth
+RUN install-pinned-plugin.sh matrix-project
 RUN install-pinned-plugin.sh maven-plugin
 RUN install-pinned-plugin.sh pam-auth
 RUN install-pinned-plugin.sh script-security
 RUN install-pinned-plugin.sh ssh-credentials
 RUN install-pinned-plugin.sh subversion
 RUN install-pinned-plugin.sh translation
+RUN install-pinned-plugin.sh windows-slaves
 
 RUN install-plugin.sh mapdb-api
 RUN install-plugin.sh scm-api
