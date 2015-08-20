@@ -29,6 +29,7 @@ RUN install-pinned-plugin.sh maven-plugin
 RUN install-pinned-plugin.sh pam-auth
 RUN install-pinned-plugin.sh script-security
 RUN install-pinned-plugin.sh ssh-credentials
+RUN install-pinned-plugin.sh ssh-slaves
 RUN install-pinned-plugin.sh subversion
 RUN install-pinned-plugin.sh translation
 RUN install-pinned-plugin.sh windows-slaves
