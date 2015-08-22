@@ -1,4 +1,4 @@
-FROM java:8-jdk
+FROM java:7-jdk
 MAINTAINER Levi Stephen <levi.stephen@gmail.com>
 
 ENV JENKINS_INSTALL /usr/share/jenkins
