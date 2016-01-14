@@ -6,15 +6,14 @@ RUN mkdir -p ${JENKINS_INSTALL}
 
 RUN curl -L http://mirrors.jenkins-ci.org/war/latest/jenkins.war -o ${JENKINS_INSTALL}/jenkins.war
 
-COPY *.sh ${JENKINS_INSTALL}/
+COPY bin/*.sh ${JENKINS_INSTALL}/
 RUN for f in ${JENKINS_INSTALL}/*.sh; do chmod +x $f; done;
 RUN for f in ${JENKINS_INSTALL}/*.sh; do ln -s $f /usr/bin/`basename $f`; done;
 
 ENV JENKINS_HOME /var/jenkins
-RUN mkdir -p ${JENKINS_HOME}
-
 ENV JENKINS_PLUGINS_HOME ${JENKINS_INSTALL}/plugins
-RUN mkdir -p ${JENKINS_PLUGINS_HOME}
+
+RUN mkdir -p ${JENKINS_HOME} && mkdir -p ${JENKINS_PLUGINS_HOME}
 
 RUN install-pinned-plugin.sh antisamy-markup-formatter
 RUN install-pinned-plugin.sh credentials
