@@ -1,0 +1,27 @@
+image: lstephen/docker-push:9
+
+default: build
+
+environment:
+  - DOCKER_PUSH_NAME=lstephen/jenkins
+  - DOCKER_PUSH_EMAIL=levi.stephen@gmail.com
+  - DOCKER_PUSH_USERNAME
+  - DOCKER_PUSH_PASSWORD
+
+volumes:
+  - /var/run/docker.sock:/var/run/docker.sock
+
+targets:
+  version:
+    image: lstephen/versiune:2
+    run: VERSION
+
+  build: build
+
+  release:
+    before:
+      - version
+    volumes:
+      - $GIT_SSH_KEY:/ssh/id_rsa
+    run: build release
+
