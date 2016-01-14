@@ -13,10 +13,13 @@ volumes:
 
 targets:
   version:
-    image: lstephen/versiune:2
-    run: VERSION
+    image: lstephen/curl:7.38.0
+    run: -sSL https://updates.jenkins-ci.org/latestCore.txt -o VERSION
 
-  build: build
+  build:
+    before:
+      - version
+    run: build
 
   release:
     before:

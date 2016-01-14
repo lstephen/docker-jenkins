@@ -4,7 +4,10 @@ MAINTAINER Levi Stephen <levi.stephen@gmail.com>
 ENV JENKINS_INSTALL /usr/share/jenkins
 RUN mkdir -p ${JENKINS_INSTALL}
 
-RUN curl -L http://mirrors.jenkins-ci.org/war/latest/jenkins.war -o ${JENKINS_INSTALL}/jenkins.war
+COPY VERSION ${JENKINS_INSTALL}/VERSION
+
+RUN curl -ssL http://mirrors.jenkins-ci.org/war/$(cat ${JENKINS_INSTALL}/VERSION)/jenkins.war \
+  -o ${JENKINS_INSTALL}/jenkins.war
 
 COPY bin/*.sh ${JENKINS_INSTALL}/
 RUN for f in ${JENKINS_INSTALL}/*.sh; do chmod +x $f; done;
