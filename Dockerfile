@@ -6,7 +6,7 @@ RUN mkdir -p ${JENKINS_INSTALL}
 
 RUN curl -L http://mirrors.jenkins-ci.org/war/latest/jenkins.war -o ${JENKINS_INSTALL}/jenkins.war
 
-COPY bin/*.sh ${JENKINS_INSTALL}
+COPY bin/*.sh ${JENKINS_INSTALL}/
 RUN for f in ${JENKINS_INSTALL}/*.sh; do chmod +x $f; done;
 RUN for f in ${JENKINS_INSTALL}/*.sh; do ln -s $f /usr/bin/`basename $f`; done;
 
