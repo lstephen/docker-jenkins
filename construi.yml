@@ -12,9 +12,15 @@ volumes:
   - /var/run/docker.sock:/var/run/docker.sock
 
 targets:
-  version:
+  jenkins-version:
     image: lstephen/curl:7.38.0
-    run: -sSL https://updates.jenkins-ci.org/latestCore.txt -o VERSION
+    run: -sSL https://updates.jenkins-ci.org/latestCore.txt -o JENKINS_VERSION
+
+  version:
+    before:
+      - jenkins-version
+    image: lstephen/versiune:6
+    run: -t '$version.$(cat JENKINS_VERSION)' VERSION
 
   build:
     before:
