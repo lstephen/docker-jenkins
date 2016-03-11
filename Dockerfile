@@ -21,6 +21,7 @@ RUN mkdir -p ${JENKINS_HOME} && mkdir -p ${JENKINS_PLUGINS_HOME}
 RUN install-pinned-plugin.sh antisamy-markup-formatter
 RUN install-pinned-plugin.sh credentials
 RUN install-pinned-plugin.sh cvs
+RUN install-pinned-plugin.sh icon-shim
 RUN install-pinned-plugin.sh javadoc
 RUN install-pinned-plugin.sh junit
 RUN install-pinned-plugin.sh ldap
