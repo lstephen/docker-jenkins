@@ -40,6 +40,30 @@ RUN install-pinned-plugin.sh windows-slaves
 RUN install-plugin.sh mapdb-api
 RUN install-plugin.sh scm-api
 
+# Jekins 2.0 pluins
+RUN install-plugin.sh ace-editor
+RUN install-plugin.sh branch-api
+RUN install-plugin.sh cloudbees-folder
+RUN install-plugin.sh durable-task
+RUN install-plugin.sh git-client
+RUN install-plugin.sh git-server
+RUN install-plugin.sh jquery-detached
+RUN install-plugin.sh pipeline-build-step
+RUN install-plugin.sh pipeline-input-step
+RUN install-plugin.sh pipeline-stage-step
+RUN install-plugin.sh structs
+RUN install-plugin.sh workflow-aggregator
+RUN install-plugin.sh workflow-api
+RUN install-plugin.sh workflow-basic-steps
+RUN install-plugin.sh workflow-cps
+RUN install-plugin.sh workflow-cps-global-lib
+RUN install-plugin.sh workflow-durable-task-step
+RUN install-plugin.sh workflow-job
+RUN install-plugin.sh workflow-multibranch
+RUN install-plugin.sh workflow-scm-step
+RUN install-plugin.sh workflow-step-api
+RUN install-plugin.sh workflow-support
+
 ENTRYPOINT ["/usr/share/jenkins/jenkins-entrypoint.sh"]
 
 EXPOSE 8080
