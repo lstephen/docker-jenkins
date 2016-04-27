@@ -3,5 +3,5 @@ node {
   checkout scm
 
   state 'Build'
-  construi build
+  sh "construi build"
 }
