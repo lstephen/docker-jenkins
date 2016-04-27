@@ -4,5 +4,5 @@ node('construi') {
   checkout scm
 
   stage 'Build'
-  construi build
+  sh 'construi build'
 }
