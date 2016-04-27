@@ -2,6 +2,6 @@ node {
   stage 'Checkout'
   checkout scm
 
-  state 'Build'
+  stage 'Build'
   sh "construi build"
 }
