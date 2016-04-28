@@ -10,8 +10,8 @@ def construi(target) {
 }
 
 node('construi') {
-  stage 'Checkout'
-  checkout scm
+  //stage 'Checkout'
+  //checkout scm
 
   sh 'git branch'
 
