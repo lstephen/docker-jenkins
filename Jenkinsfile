@@ -3,11 +3,11 @@ properties(
   , [$class: 'GithubProjectProperty', projectUrlStr: 'http://github.com/lstephen/docker-jenkins']
   ])
 
-def construi(target)
+def construi(target) {
   wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
     sh "construi ${target}"
   }
-end
+}
 
 node('construi') {
   stage 'Checkout'
