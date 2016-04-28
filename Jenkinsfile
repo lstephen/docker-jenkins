@@ -12,8 +12,7 @@ def construi(target) {
 node('construi') {
   stage 'Checkout'
   checkout scm
-
-  echo "${scm}"
+  sh "git checkout ${env.BRANCH_NAME}"
 
   sh 'git branch'
 
