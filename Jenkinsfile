@@ -1,7 +1,7 @@
 
 
 node('construi') {
-  properties [[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30']]]
+  properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30']]])
 
   stage 'Checkout'
   checkout scm
