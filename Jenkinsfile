@@ -14,8 +14,6 @@ node('construi') {
   checkout scm
   sh "git checkout ${env.BRANCH_NAME}"
 
-  sh 'git branch'
-
   if (env.BRANCH_NAME == 'master') {
     stage 'Release'
 
