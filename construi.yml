@@ -19,7 +19,7 @@ targets:
   version:
     before:
       - jenkins-version
-    image: lstephen/versiune:6
+    image: lstephen/versiune:8
     run: -t '$version.$(cat JENKINS_VERSION)' VERSION
 
   build:
