@@ -13,7 +13,7 @@ node('construi') {
   stage 'Checkout'
   checkout scm
 
-  echo "$scm"
+  echo "${scm}"
 
   sh 'git branch'
 
