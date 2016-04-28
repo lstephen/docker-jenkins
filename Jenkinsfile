@@ -13,8 +13,11 @@ node('construi') {
   stage 'Checkout'
   checkout scm
 
+  sh 'git branch'
+
   if (env.BRANCH_NAME == 'master') {
     stage 'Release'
+
 
     withCredentials(
       [
