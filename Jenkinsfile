@@ -1,8 +1,8 @@
 
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30']]])
-wrap([[$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']])
 
 node('construi') {
+  wrap([[$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']])
 
   stage 'Checkout'
   checkout scm
