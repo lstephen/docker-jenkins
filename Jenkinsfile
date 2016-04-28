@@ -12,4 +12,6 @@ node('construi') {
   wrap([$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']) {
     sh 'construi build'
   }
+
+  step [$class: 'GitHubCommitNotifier, resultOnFailure: 'FAILURE']
 }
