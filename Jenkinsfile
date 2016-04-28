@@ -1,6 +1,6 @@
 
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30']]])
-properties([[$class: 'DiskUsageProperty']])
+wrap([[$class: 'AnsiColorBuildWrapper', colorMapName: 'xterm']])
 
 node('construi') {
 
