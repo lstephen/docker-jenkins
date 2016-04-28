@@ -19,8 +19,8 @@ node('construi') {
     withCredentials(
       [
         [ $class: 'UsernamePasswordMultiBinding'
-        , usernameVariable: 'DOCKER_USERNAME'
-        , passwordVariable: 'DOCKER_PASSWORD'
+        , usernameVariable: 'DOCKER_PUSH_USERNAME'
+        , passwordVariable: 'DOCKER_PUSH_PASSWORD'
         , credentialsId: 'c61346cf-aca8-4ae6-bee8-e8ccf02eaa12'
         ]
       , [ $class: 'FileBinding'
