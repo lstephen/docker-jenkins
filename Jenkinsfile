@@ -1,4 +1,6 @@
-stage 'Build'
+properties properties: [[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30']]
+
+
 node('construi') {
   stage 'Checkout'
   checkout scm
