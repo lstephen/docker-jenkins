@@ -16,20 +16,18 @@ targets:
     image: lstephen/curl:7.38.0
     run: -sSL https://updates.jenkins-ci.org/latestCore.txt -o JENKINS_VERSION
 
-  version:
+  versiune:
     before:
       - jenkins-version
     image: lstephen/versiune:8
     run: -t '$version.$(cat JENKINS_VERSION)' VERSION
 
   build:
-    before:
-      - version
     run: build
 
   release:
     before:
-      - version
+      - versiune
     volumes:
       - $GIT_SSH_KEY:/ssh/id_rsa
     run: build release
