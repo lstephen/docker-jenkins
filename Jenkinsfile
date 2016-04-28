@@ -14,7 +14,7 @@ node('construi') {
   checkout scm
 
   if (env.BRANCH_NAME == 'master') {
-    stage 'Deploy'
+    stage 'Release'
 
     withCredentials(
       [
@@ -27,7 +27,7 @@ node('construi') {
         , variable: 'GIT_SSH_KEY'
         , credentialsId: 'cfbecb37-737f-4597-86f7-43fb2d3322cc' ]
       ]) {
-        construi 'deploy'
+        construi 'release'
       }
   } else {
     stage 'Build'
