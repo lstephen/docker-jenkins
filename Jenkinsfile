@@ -20,6 +20,8 @@ node('construi') {
 if (env.BRANCH_NAME == 'master') {
   stage 'Release'
   node('construi') {
+    checkout scm
+
     construi 'versiune'
     currentBuild.description = "Release v${readFile('VERSION')}"
 
