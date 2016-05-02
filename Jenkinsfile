@@ -1,3 +1,5 @@
+#!groovy
+
 properties(
   [ [$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', daysToKeepStr: '30'] ]
   , [$class: 'GithubProjectProperty', projectUrlStr: 'http://github.com/lstephen/docker-jenkins']
@@ -9,14 +11,19 @@ def construi(target) {
   }
 }
 
+stage 'Build'
 node('construi') {
-  stage 'Checkout'
   checkout scm
-  sh "git checkout ${env.BRANCH_NAME}"
+  construi 'build'
+}
 
-  if (env.BRANCH_NAME == 'master') {
-    stage 'Release'
+if (env.BRANCH_NAME == 'master') {
+  stage 'Release'
+  node('construi') {
+    checkout scm
 
+    construi 'versiune'
+    currentBuild.description = "Release v${readFile('VERSION')}"
 
     withCredentials(
       [
@@ -30,9 +37,7 @@ node('construi') {
         , credentialsId: 'cfbecb37-737f-4597-86f7-43fb2d3322cc' ]
       ]) {
         construi 'release'
-      }
-  } else {
-    stage 'Build'
-    construi 'build'
+    }
   }
 }
+
