@@ -39,7 +39,5 @@ if (env.BRANCH_NAME == 'master') {
         construi 'release'
     }
   }
-
-  build job: '../docker-jenkins-mylonelybear/master', wait: false
 }
 
