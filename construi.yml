@@ -1,10 +1,9 @@
-image: lstephen/docker-push:16
+image: docker:17.07.0-ce
 
 default: build
 
 environment:
   - DOCKER_PUSH_NAME=lstephen/jenkins
-  - DOCKER_PUSH_EMAIL=levi.stephen@gmail.com
   - DOCKER_PUSH_USERNAME
   - DOCKER_PUSH_PASSWORD
 
@@ -19,18 +18,21 @@ targets:
   versiune:
     before:
       - jenkins-version
-    image: lstephen/versiune:13
-    run: -t '$version.$(cat JENKINS_VERSION)' VERSION
+    build: .
+    run: VERSION
 
   build:
     before:
-      - jenkins-version
-    run: build
+      - versiune
+    run:
+      - /bin/sh -c "docker build -t $DOCKER_PUSH_NAME:$(cat VERSION) ."
 
   release:
     before:
-      - versiune
-    volumes:
-      - $GIT_SSH_KEY:/ssh/id_rsa
-    run: release
-
+      - build
+    run: /bin/sh -c "
+         echo $DOCKER_PUSH_USERNAME
+      && docker login -u $DOCKER_PUSH_USERNAME -p $DOCKER_PUSH_PASSWORD
+      && docker tag $DOCKER_PUSH_NAME:$(cat VERSION) $DOCKER_PUSH_NAME:latest
+      && docker push $DOCKER_PUSH_NAME:$(cat VERSION)
+      && docker push $DOCKER_PUSH_NAME:latest"

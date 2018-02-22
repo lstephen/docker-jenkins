@@ -1,0 +1,22 @@
+sudo: required
+
+language: generic
+
+env:
+  global:
+  - DOCKER_PUSH_USERNAME=lstephen
+
+services:
+- docker
+
+before_install:
+- pip install --user construi
+
+script:
+- construi build
+
+deploy:
+  provider: script
+  script: construi release
+  on:
+    tags: true
