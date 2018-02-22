@@ -18,7 +18,7 @@ targets:
   versiune:
     before:
       - jenkins-version
-    image: lstephe/versiune:2.0.0-RC1
+    image: lstephen/versiune:2.0.0-RC1
     run: VERSION
 
   build:
